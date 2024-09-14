@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package dns;
+
+service DNS { rpc Resolve(DNSRequest) returns (DNSResponse); }
+
+message DNSRequest { string url = 1; }
+
+message DNSResponse { repeated string addresses = 1; }
