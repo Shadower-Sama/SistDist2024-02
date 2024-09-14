@@ -1,0 +1,19 @@
+name: dns
+
+services:
+    server:
+        build: server
+        volumes:
+            - ./protobuf:/usr/src/app/proto:ro
+
+    client:
+        build: client
+        volumes:
+            - ./protobuf:/usr/src/app/proto:ro
+        ports:
+            - 3000:3000
+    
+    redis:
+        image: bitnami/redis:7.4.0
+        environment:
+            - ALLOW_EMPTY_PASSWORD=yes
